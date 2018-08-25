@@ -271,7 +271,7 @@ const getHolidays = (year, month, numDays) => {
       month === 10 &&
       weekRow === 2 &&
       theDay.getDay() === 1 &&
-      year <= 2021
+      year >= 2021
     ) {
       // スポーツの日
       holidays[i] = 'スポーツの日';
