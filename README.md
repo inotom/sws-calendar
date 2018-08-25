@@ -5,7 +5,7 @@ A JavaScript calendar class
 ## Install
 
 ```
-$ npm install -D git+https://github.com/inotom/sws-calendar.git#v1.0.0
+$ npm install -D git+https://github.com/inotom/sws-calendar.git#v1.0.1
 ```
 
 ## Usage
