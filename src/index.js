@@ -223,19 +223,32 @@ const getHolidays = (year, month, numDays) => {
     } else if (month === 7 && i === 20 && year >= 1996 && year <= 2002) {
       // 海の日
       holidays[i] = '海の日';
+    } else if (month === 7 && i === 22 && year === 2021) {
+      // 海の日
+      holidays[i] = '海の日';
     } else if (
       month === 7 &&
       weekRow === 3 &&
       theDay.getDay() === 1 &&
       year >= 2003 &&
-      year !== 2020
+      year !== 2020 &&
+      year !== 2021
     ) {
       // 海の日
       holidays[i] = '海の日';
     } else if (month === 8 && i === 10 && year === 2020) {
       // 山の日
       holidays[i] = '山の日';
-    } else if (month === 8 && i === 11 && year >= 2016 && year !== 2020) {
+    } else if (month === 8 && i === 8 && year === 2021) {
+      // 山の日
+      holidays[i] = '山の日';
+    } else if (
+      month === 8 &&
+      i === 11 &&
+      year >= 2016 &&
+      year !== 2020 &&
+      year !== 2021
+    ) {
       // 山の日
       holidays[i] = '山の日';
     } else if (month === 9 && i === 15 && year <= 2002) {
@@ -267,11 +280,14 @@ const getHolidays = (year, month, numDays) => {
     } else if (month === 7 && i === 24 && year === 2020) {
       // スポーツの日
       holidays[i] = 'スポーツの日';
+    } else if (month === 7 && i === 23 && year === 2021) {
+      // スポーツの日
+      holidays[i] = 'スポーツの日';
     } else if (
       month === 10 &&
       weekRow === 2 &&
       theDay.getDay() === 1 &&
-      year >= 2021
+      year >= 2022
     ) {
       // スポーツの日
       holidays[i] = 'スポーツの日';

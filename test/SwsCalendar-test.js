@@ -110,8 +110,13 @@ describe('SwsCalendar class', function() {
         assert(calDay.day === 23);
       });
 
-      it('2021年以降の海の日は7月第3月曜日', function() {
+      it('2021年の海の日は7月22日', function() {
         const calDay = getHoliday(2021, 7, '海の日');
+        assert(calDay.day === 22);
+      });
+
+      it('2022年以降の海の日は7月第3月曜日', function() {
+        const calDay = getHoliday(2022, 7, '海の日');
         assert(calDay.dayWeek === 1);
         assert(calDay.weekLineRows === 3);
       });
@@ -128,8 +133,13 @@ describe('SwsCalendar class', function() {
         assert(calDay.day === 10);
       });
 
-      it('2021年以降の山の日は8月11日', function() {
+      it('2021年の山の日は8月8日', function() {
         const calDay = getHoliday(2021, 8, '山の日');
+        assert(calDay.day === 8);
+      });
+
+      it('2022年以降の山の日は8月11日', function() {
+        const calDay = getHoliday(2022, 8, '山の日');
         assert(calDay.day === 11);
       });
 
@@ -168,8 +178,13 @@ describe('SwsCalendar class', function() {
         assert(calDay.day === 24);
       });
 
-      it('2021年以降のスポーツの日は10月第2月曜日', function() {
-        const calDay = getHoliday(2021, 10, 'スポーツの日');
+      it('2021年のスポーツの日は7月23日', function() {
+        const calDay = getHoliday(2021, 7, 'スポーツの日');
+        assert(calDay.day === 23);
+      });
+
+      it('2022年以降のスポーツの日は10月第2月曜日', function() {
+        const calDay = getHoliday(2022, 10, 'スポーツの日');
         assert(calDay.dayWeek === 1);
         assert(calDay.weekLineRows === 2);
       });
