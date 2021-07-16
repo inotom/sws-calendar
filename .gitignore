@@ -3,4 +3,5 @@
 *~
 *.log
 *.lock
+.node-version
 /node_modules
