@@ -5,23 +5,15 @@ const DIST_DIR = 'dist';
 const webpack = require('webpack');
 const pkg = require('./package.json');
 const path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const IS_DEVS = process.env.NODE_ENV === 'development';
 
 const plugins = [];
 
 if (!IS_DEVS) {
   plugins.push(
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        ecma: 8,
-        output: {
-          comments: 'some'
-        }
-      }
-    }),
     new webpack.BannerPlugin({
-      banner: `${pkg.name} v${pkg.version} ${pkg.author} | ${pkg.license}`
+      banner: `${pkg.name} v${pkg.version} ${pkg.author} | ${pkg.license}`,
     })
   );
 }
@@ -29,11 +21,11 @@ if (!IS_DEVS) {
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: {
-    'sws-calendar': './src/index.js'
+    'sws-calendar': './src/index.js',
   },
   output: {
     path: path.resolve(__dirname, DIST_DIR),
-    filename: '[name].min.js'
+    filename: '[name].min.js',
   },
   module: {
     rules: [
@@ -42,18 +34,28 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         use: [
           {
-            loader: 'babel-loader'
-          }
-        ]
-      }
-    ]
+            loader: 'babel-loader',
+          },
+        ],
+      },
+    ],
   },
   resolve: {
-    extensions: ['.js']
+    extensions: ['.js'],
   },
-  devtool: IS_DEVS ? 'source-map' : false,
+  devtool: false,
   optimization: {
-    minimize: false
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        test: /\.js(\?.*)?$/i,
+        exclude: /node_modules/,
+        extractComments: false,
+        terserOptions: {
+          ecma: 5,
+        },
+      }),
+    ],
   },
-  plugins: plugins
+  plugins: plugins,
 };

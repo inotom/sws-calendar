@@ -1,6 +1,6 @@
 {
   "name": "sws-calendar",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Calendar Object with Japanese holidays data",
   "main": "lib/index.js",
   "config": {
@@ -11,13 +11,13 @@
   "scripts": {
     "start": "NODE_ENV=development npm run watch:test",
     "prebuild": "npm run clean && npm run lint && npm test",
-    "build": "NODE_ENV=production webpack -p",
+    "build": "NODE_ENV=production webpack --color",
     "prepare": "babel $npm_package_config_src_dir --out-dir $npm_package_config_lib_dir",
     "clean": "rimraf '**/.DS_Store' & rimraf $npm_package_config_dist_dir",
     "watch:test": "nodemon -w test -w $npm_package_config_src_dir -e js -x 'npm test'",
     "prettier": "prettier --write 'src/**/*.js'",
     "lint": "eslint $npm_package_config_src_dir",
-    "test": "mocha --require babel-register test/**/*.js"
+    "test": "mocha --require @babel/register test/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -31,20 +31,21 @@
   },
   "homepage": "https://github.com/inotom/sws-calendar#readme",
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-core": "6.26.3",
-    "babel-eslint": "8.2.6",
-    "babel-loader": "7.1.5",
-    "babel-preset-env": "1.7.0",
-    "babel-preset-power-assert": "2.0.0",
-    "babel-register": "6.26.0",
-    "eslint": "5.4.0",
-    "mocha": "5.2.0",
-    "nodemon": "1.18.3",
-    "power-assert": "1.6.0",
-    "prettier": "1.14.2",
-    "rimraf": "2.6.2",
-    "webpack": "4.17.1",
-    "webpack-cli": "3.1.0"
+    "@babel/cli": "7.14.5",
+    "@babel/core": "7.14.6",
+    "@babel/preset-env": "7.14.7",
+    "@babel/register": "7.14.5",
+    "babel-eslint": "10.1.0",
+    "babel-loader": "8.2.2",
+    "babel-preset-power-assert": "3.0.0",
+    "eslint": "7.30.0",
+    "mocha": "9.0.2",
+    "nodemon": "2.0.12",
+    "power-assert": "1.6.1",
+    "prettier": "2.3.2",
+    "rimraf": "3.0.2",
+    "terser-webpack-plugin": "5.1.4",
+    "webpack": "5.44.0",
+    "webpack-cli": "4.7.2"
   }
 }
