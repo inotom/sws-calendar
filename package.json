@@ -1,51 +1,50 @@
 {
   "name": "sws-calendar",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Calendar Object with Japanese holidays data",
   "main": "lib/index.js",
   "config": {
-    "dist_dir": "dist",
     "lib_dir": "lib",
     "src_dir": "src"
   },
   "scripts": {
     "start": "NODE_ENV=development npm run watch:test",
-    "prebuild": "npm run clean && npm run lint && npm test",
-    "build": "NODE_ENV=production webpack --color",
-    "prepare": "babel $npm_package_config_src_dir --out-dir $npm_package_config_lib_dir",
-    "clean": "rimraf '**/.DS_Store' & rimraf $npm_package_config_dist_dir",
-    "watch:test": "nodemon -w test -w $npm_package_config_src_dir -e js -x 'npm test'",
-    "prettier": "prettier --write 'src/**/*.js'",
-    "lint": "eslint $npm_package_config_src_dir",
-    "test": "mocha --require @babel/register test/**/*.js"
+    "prebuild": "npm run clean && npm test",
+    "build": "npx tsc --target es2020 --module commonjs $npm_package_config_src_dir/*.ts --outDir $npm_package_config_lib_dir",
+    "clean": "rimraf '**/.DS_Store' & rimraf $npm_package_config_lib_dir",
+    "watch:test": "nodemon -w test -w $npm_package_config_src_dir -e ts -x 'npm test'",
+    "lint:ts": "eslint --ext .ts $npm_package_config_src_dir",
+    "fix:ts": "eslint --fix --ext .ts $npm_package_config_src_dir",
+    "prettier": "prettier --write $npm_package_config_src_dir/*.ts",
+    "test": "npm run lint:ts && jest -c jest.config.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/inotom/sws-calendar.git"
   },
   "keywords": [],
-  "author": "iNo (http://www.serendip.ws/)",
+  "author": "iNo (https://www.serendip.ws/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/inotom/sws-calendar/issues"
   },
   "homepage": "https://github.com/inotom/sws-calendar#readme",
   "devDependencies": {
-    "@babel/cli": "7.14.5",
-    "@babel/core": "7.14.6",
-    "@babel/preset-env": "7.14.7",
-    "@babel/register": "7.14.5",
-    "babel-eslint": "10.1.0",
-    "babel-loader": "8.2.2",
-    "babel-preset-power-assert": "3.0.0",
-    "eslint": "7.30.0",
-    "mocha": "9.0.2",
-    "nodemon": "2.0.12",
-    "power-assert": "1.6.1",
-    "prettier": "2.3.2",
-    "rimraf": "3.0.2",
-    "terser-webpack-plugin": "5.1.4",
-    "webpack": "5.44.0",
-    "webpack-cli": "4.7.2"
+    "@babel/core": "7.23.9",
+    "@babel/preset-env": "7.23.9",
+    "@types/jest": "29.5.11",
+    "@types/node": "20.11.6",
+    "@typescript-eslint/eslint-plugin": "6.19.1",
+    "@typescript-eslint/parser": "6.19.1",
+    "babel-jest": "29.7.0",
+    "eslint": "8.56.0",
+    "eslint-config-prettier": "9.1.0",
+    "jest": "29.7.0",
+    "jest-environment-jsdom": "29.7.0",
+    "nodemon": "3.0.3",
+    "prettier": "3.2.4",
+    "ts-jest": "29.1.2",
+    "ts-loader": "9.5.1",
+    "typescript": "5.3.3"
   }
 }
