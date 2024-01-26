@@ -1,17 +1,21 @@
 {
   "name": "sws-calendar",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Calendar Object with Japanese holidays data",
   "main": "lib/index.js",
+  "types": "types/index.d.ts",
   "config": {
     "lib_dir": "lib",
+    "types_dir": "types",
     "src_dir": "src"
   },
   "scripts": {
     "start": "NODE_ENV=development npm run watch:test",
     "prebuild": "npm run clean && npm test",
     "build": "npx tsc --target es2020 --module commonjs $npm_package_config_src_dir/*.ts --outDir $npm_package_config_lib_dir",
-    "clean": "rimraf '**/.DS_Store' & rimraf $npm_package_config_lib_dir",
+    "postbuild": "npm run types",
+    "types": "npx tsc src/*.ts --declaration --emitDeclarationOnly --outDir $npm_package_config_types_dir",
+    "clean": "rimraf '**/.DS_Store' & rimraf $npm_package_config_lib_dir & rimraf $npm_package_config_types_dir",
     "watch:test": "nodemon -w test -w $npm_package_config_src_dir -e ts -x 'npm test'",
     "lint:ts": "eslint --ext .ts $npm_package_config_src_dir",
     "fix:ts": "eslint --fix --ext .ts $npm_package_config_src_dir",

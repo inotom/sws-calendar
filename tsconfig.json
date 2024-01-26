@@ -23,7 +23,8 @@
     //],
     // デコレーターを有効に設定
     "experimentalDecorators": true,
-    //"declaration": true,
+    // d.tsファイルを生成する
+    "declaration": true,
     //"esModuleInterop": true,
     //"skipLibCheck": true,
     // jsonファイルから型解決した状態で値を取得.
