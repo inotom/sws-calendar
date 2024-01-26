@@ -3,6 +3,9 @@
 import { CalDay } from './CalDay';
 import { getHolidays } from './holidays';
 
+export * from './CalDay';
+export * from './holidays';
+
 /**
  * Numbers of days in each months
  *

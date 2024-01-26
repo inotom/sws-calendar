@@ -1,5 +1,7 @@
 /** @prettier */
 import { CalDay } from './CalDay';
+export * from './CalDay';
+export * from './holidays';
 export declare class SwsCalendar {
     year: number;
     month: number;

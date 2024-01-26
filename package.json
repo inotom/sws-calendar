@@ -1,6 +1,6 @@
 {
   "name": "sws-calendar",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Calendar Object with Japanese holidays data",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
