@@ -26,6 +26,6 @@ cal.getMonth();  // get number of month (January is 1)
 
 ## History
 
-## [v2.0.0] - 2024-01-26
+## [v2.0.2] - 2024-01-26
 
 - Change language to TypeScript.
